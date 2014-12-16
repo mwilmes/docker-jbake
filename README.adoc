@@ -1,0 +1,25 @@
+= docker-jbake
+
+Docker enabled JBake based blogging
+
+== How to use
+
+- Create a local blog directory (e.g. +Documents/Blog/input+ and +Documents/Blog/output+).
+
+- Initialize the blog input directory (w/ thymeleaf templating in this example):
++
+[source,bash]
+----
+docker run -t -i --rm -v ~/Documents/Blog:/mnt/blog jbake bash -c 'cd /mnt/blog/input  && /opt/jbake/bin/jbake --i thymeleaf'
+----
+
+- Make you modifications to the input (content, templates etc).
+
+- Bake your blog with JBake:
++
+[source,bash]
+----
+docker run -t -i --rm -v ~/Documents/Blog:/mnt/blog jbake /opt/jbake/bin/jbake /mnt/blog/input /mnt/blog/output
+----
+
+- Enjoy your blog in the blog output directory.
